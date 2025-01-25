@@ -13,63 +13,29 @@
   <img src="logo-me.png">
   <div class="loader">
 
-    <div class="banter-loader">
-      <div class="banter-loader__box"></div>
-      <div class="banter-loader__box"></div>
-      <div class="banter-loader__box"></div>
-      <div class="banter-loader__box"></div>
-      <div class="banter-loader__box"></div>
-      <div class="banter-loader__box"></div>
-      <div class="banter-loader__box"></div>
-      <div class="banter-loader__box"></div>
-      <div class="banter-loader__box"></div>
-    </div>
-
     <div class="scanner">
       <span>Bienvenue</span>
     </div>
 
     <h1 class="center">Clique sur le bouton ci-dessous pour continuer.</h1>
 
-    <button class="button" onclick="window.location.href='./page.html';">
-      C'EST PARTI !
-    </button>
-
-    <div class="container">
-      <div class="tree">
-        <div class="branch" style="--x:0">
-          <span style="--i:0;"></span>
-          <span style="--i:1;"></span>
-          <span style="--i:2;"></span>
-          <span style="--i:3;"></span>
-        </div>
-        <div class="branch" style="--x:1">
-          <span style="--i:0;"></span>
-          <span style="--i:1;"></span>
-          <span style="--i:2;"></span>
-          <span style="--i:3;"></span>
-        </div>
-        <div class="branch" style="--x:2">
-          <span style="--i:0;"></span>
-          <span style="--i:1;"></span>
-          <span style="--i:2;"></span>
-          <span style="--i:3;"></span>
-        </div>
-        <div class="branch" style="--x:3">
-          <span style="--i:0;"></span>
-          <span style="--i:1;"></span>
-          <span style="--i:2;"></span>
-          <span style="--i:3;"></span>
-        </div>
-        <div class="stem">
-          <span style="--i:0;"></span>
-          <span style="--i:1;"></span>
-          <span style="--i:2;"></span>
-          <span style="--i:3;"></span>
-        </div>
-        <span class="shadow"></span>
+    <button type="button" class="btn" onclick="window.location.href='./page.html';">
+      <strong>C'EST PARTI !</strong>
+      <div id="container-stars">
+        <div id="stars"></div>
       </div>
-    </div>
+
+      <button type="button" class="btn" onclick="window.location.href='./code.html';">
+        <strong>CODE SOURCE</strong>
+        <div id="container-stars">
+          <div id="stars"></div>
+        </div>
+
+        <div id="glow">
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </button>
 
 </body>
 
