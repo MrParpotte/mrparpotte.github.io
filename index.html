@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mes Réseaux Sociaux</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d1117;
+      color: #f0f6fc;
+      transition: background-color 0.4s, color 0.4s;
+    }
+
+    body.light-mode {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .card {
+      background: #5865F2;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .profile-pic {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: 1.8em;
+      margin: 10px 0;
+    }
+
+    .bio {
+      font-size: 1em;
+      margin-bottom: 25px;
+      color: #d1d5db;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    a.button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: white;
+      text-decoration: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    a.button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .instagram {
+      background-color: #e1306c;
+    }
+
+    .twitter {
+      background-color: #1da1f2;
+    }
+
+    .youtube {
+      background-color: #ff0000;
+    }
+
+    .tiktok {
+      background-color: #000000;
+    }
+
+    .fa-brands {
+      font-size: 1.2em;
+    }
+
+    .discord-box {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .discord-input {
+      padding: 10px;
+      font-size: 0.95em;
+      border-radius: 6px;
+      border: none;
+      width: 220px;
+    }
+
+    .copy-btn {
+      padding: 10px 15px;
+      background-color: #ffffff;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 6px;
+    }
+
+    .mode-switch {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      background-color: #5865F2;
+      color: white;
+      cursor: pointer;
+    }
+
+    .about {
+      max-width: 600px;
+      margin-top: 40px;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .about h2 {
+      font-size: 1.6em;
+      margin-bottom: 10px;
+    }
+
+    .about p {
+      font-size: 1.05em;
+      line-height: 1.6;
+    }
+
+    .visitor-counter {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #9ca3af;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.85em;
+      color: #888;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="mode-switch" onclick="toggleMode()">Thème Clair/Sombre</button>
+  <div class="container">
+    <div class="card">
+      <img src="profile.jpg" alt="Photo de profil" class="profile-pic" />
+      <h1>MrParpotte</h1>
+      <p class="bio">Bienvenue sur ma page de liens. Retrouvez ici tous mes réseaux sociaux !</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/mrparpotte/" class="button instagram"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://x.com/HugoSalvatori1" class="button twitter"><i class="fab fa-twitter"></i> Twitter</a>
+        <a href="https://www.youtube.com/@MrParpotte" class="button youtube"><i class="fab fa-youtube"></i> YouTube</a>
+        <a href="https://www.tiktok.com/@mrparpotte" class="button tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
+      </div>
+      <div class="discord-box">
+        <input type="text" class="discord-input" id="discordLink" value="https://discord.gg/ubDtnUn96q" readonly>
+        <button class="copy-btn" onclick="copyDiscord()">Copier</button>
+      </div>
+    </div>
+    <div class="about">
+      <h2>À propos de moi</h2>
+      <p>
+        𝐉𝐞 𝐟𝐚𝐢𝐬 𝐝𝐞𝐬 𝐯𝐢𝐝𝐞𝐨𝐬 𝐥𝐨𝐧𝐠𝐮𝐞𝐬 𝐩𝐚𝐫𝐟𝐨𝐢𝐬 😅 𝐢𝐧𝐬𝐩𝐢𝐫𝐞𝐞𝐬 𝐝𝐞 𝐜𝐞𝐫𝐭𝐚𝐢𝐧𝐬
+        𝐲𝐨𝐮𝐭𝐮𝐛𝐞𝐮𝐫𝐬 (𝐅𝐮𝐫𝐢𝐨𝐮𝐬 𝐉𝐮𝐦𝐩𝐞𝐫, 𝐍𝐞𝐱𝐱𝐞𝐲, 𝐅𝐮𝐳𝐞𝐈𝐈𝐈 𝐞𝐭𝐜..) !
+
+        𝐉'𝐞𝐬𝐩𝐞𝐫𝐞 𝐪𝐮𝐞 𝐜𝐞𝐭𝐭𝐞 𝐜𝐡𝐚𝐢𝐧𝐞 𝐭𝐞 𝐩𝐥𝐚𝐢𝐫𝐚 !
+        𝐈𝐜𝐢 𝐪𝐮𝐞 𝐝𝐮 𝐫𝐞𝐬𝐩𝐞𝐜𝐭 𝐞𝐭 𝐝𝐞 𝐥𝐚 𝐛𝐨𝐧𝐧𝐞 𝐡𝐮𝐦𝐞𝐮𝐫 !
+      </p>
+    </div>
+    <div class="visitor-counter">Visites : <span id="counter">...</span></div>
+    <footer>© 2025 MrParpotte. Tous droits réservés.</footer>
+  </div>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light-mode");
+    }
+    function copyDiscord() {
+      const input = document.getElementById("discordLink");
+      input.select();
+      document.execCommand("copy");
+      alert("Lien Discord copié !");
+    }
+    fetch('https://api.countapi.xyz/hit/tonpseudo-site-visits/visits')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("counter").innerText = data.value;
+      });
+  </script>
+</body>
+
+</html>
