@@ -202,8 +202,14 @@
         𝐈𝐜𝐢 𝐪𝐮𝐞 𝐝𝐮 𝐫𝐞𝐬𝐩𝐞𝐜𝐭 𝐞𝐭 𝐝𝐞 𝐥𝐚 𝐛𝐨𝐧𝐧𝐞 𝐡𝐮𝐦𝐞𝐮𝐫 !
       </p>
     </div>
-    <div class="visitor-counter" id="counter">Visites : ...</div>
-    <footer>© 2025 MrParpotte. Tous droits réservés.</footer>
+    <footer>
+      <p>© 2025 MrParpotte. Tous droits réservés.</p>
+      <div class="visitor-counter">
+        <img
+          src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fmrparpotte.github.io&count_bg=%23757575&title_bg=%23000000&icon=github.svg&icon_color=%23ffffff&title=visites&edge_flat=false" />
+      </div>
+    </footer>
+
   </div>
 
   <script>
@@ -216,14 +222,6 @@
       document.execCommand("copy");
       alert("Lien Discord copié !");
     }
-    fetch('https://api.countapi.xyz/hit/hexalink-links/visites')
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById('counter').textContent = 'Visites : ' + data.value;
-      })
-      .catch(() => {
-        document.getElementById('counter').textContent = 'Visites : erreur';
-      })
   </script>
 </body>
 
