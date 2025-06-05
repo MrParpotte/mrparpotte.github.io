@@ -202,7 +202,7 @@
         𝐈𝐜𝐢 𝐪𝐮𝐞 𝐝𝐮 𝐫𝐞𝐬𝐩𝐞𝐜𝐭 𝐞𝐭 𝐝𝐞 𝐥𝐚 𝐛𝐨𝐧𝐧𝐞 𝐡𝐮𝐦𝐞𝐮𝐫 !
       </p>
     </div>
-    <div class="visitor-counter">Visites : <span id="counter">...</span></div>
+    <div class="visitor-counter" id="counter">Visites : ...</div>
     <footer>© 2025 MrParpotte. Tous droits réservés.</footer>
   </div>
 
@@ -216,11 +216,14 @@
       document.execCommand("copy");
       alert("Lien Discord copié !");
     }
-    fetch('https://api.countapi.xyz/hit/mrparpotte.github.io/visits')
+    fetch('https://api.countapi.xyz/hit/hexalink-links/visites')
       .then(res => res.json())
       .then(data => {
-        document.getElementById("counter").innerText = data.value;
-      });
+        document.getElementById('counter').textContent = 'Visites : ' + data.value;
+      })
+      .catch(() => {
+        document.getElementById('counter').textContent = 'Visites : erreur';
+      })
   </script>
 </body>
 
