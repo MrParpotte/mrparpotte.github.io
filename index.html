@@ -362,6 +362,223 @@
     #site-content {
       display: none;
     }
+
+    .btn-class-name {
+      --primary: 255, 90, 120;
+      --secondary: 150, 50, 60;
+      width: 60px;
+      height: 50px;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      user-select: none;
+      touch-action: manipulation;
+      outline: 10px solid rgb(var(--primary), .5);
+      border-radius: 100%;
+      position: relative;
+      transition: .3s;
+    }
+
+    .btn-class-name .back {
+      background: rgb(var(--secondary));
+      border-radius: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .btn-class-name .front {
+      background: linear-gradient(0deg, rgba(var(--primary), .6) 20%, rgba(var(--primary)) 50%);
+      box-shadow: 0 .5em 1em -0.2em rgba(var(--secondary), .5);
+      border-radius: 100%;
+      position: absolute;
+      border: 1px solid rgb(var(--secondary));
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      font-family: inherit;
+      transform: translateY(-15%);
+      transition: .15s;
+      color: rgb(var(--secondary));
+    }
+
+    .btn-class-name:active .front {
+      transform: translateY(0%);
+      box-shadow: 0 0;
+    }
+
+    .copy-btn {
+      position: relative;
+      padding: 20px 35px;
+      background: #ffffff;
+      font-size: 20px;
+      font-weight: 600;
+      color: #000000;
+      box-shadow: 0px 0px 10px 0px rgb(255, 255, 255);
+      border-radius: 100px;
+      border: none;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .star-1 {
+      position: absolute;
+      top: 20%;
+      left: 20%;
+      width: 25px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all 0.8s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+    }
+
+    .star-2 {
+      position: absolute;
+      top: 45%;
+      left: 45%;
+      width: 15px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+    }
+
+    .star-3 {
+      position: absolute;
+      top: 40%;
+      left: 40%;
+      width: 5px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+    }
+
+    .star-4 {
+      position: absolute;
+      top: 20%;
+      left: 40%;
+      width: 8px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+    }
+
+    .star-5 {
+      position: absolute;
+      top: 25%;
+      left: 45%;
+      width: 15px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+    }
+
+    .star-6 {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      width: 5px;
+      height: auto;
+      filter: drop-shadow(0 0 0 #fffdef);
+      z-index: -5;
+      transition: all 0.8s cubic-bezier(0, 0.4, 0, 1.01);
+    }
+
+    .copy-btn:hover {
+      background: #000000;
+      color: #ffffff;
+      box-shadow: 0 0 80px #ffffff8c;
+    }
+
+    .copy-btn:hover .star-1 {
+      position: absolute;
+      top: -20%;
+      left: -20%;
+      width: 20px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .copy-btn:hover .star-2 {
+      position: absolute;
+      top: 35%;
+      left: -25%;
+      width: 15px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .copy-btn:hover .star-3 {
+      position: absolute;
+      top: 80%;
+      left: -10%;
+      width: 10px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .copy-btn:hover .star-4 {
+      position: absolute;
+      top: -25%;
+      left: 105%;
+      width: 20px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .copy-btn:hover .star-5 {
+      position: absolute;
+      top: 30%;
+      left: 115%;
+      width: 15px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .copy-btn:hover .star-6 {
+      position: absolute;
+      top: 80%;
+      left: 105%;
+      width: 10px;
+      height: auto;
+      filter: drop-shadow(0 0 10px #fffdef);
+      z-index: 2;
+    }
+
+    .fil0 {
+      fill: #fffdef;
+    }
+
+    #copyMessage {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #444;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
   </style>
 </head>
 
@@ -399,9 +616,95 @@
             YouTube</a>
           <a href="https://www.tiktok.com/@mrparpotte" class="button tiktok"><i class="fab fa-tiktok"></i> TikTok</a>
         </div>
-        <div class="discord-box">
-          <input type="text" class="discord-input" id="discordLink" value="https://discord.gg/ubDtnUn96q" readonly>
-          <button class="copy-btn" onclick="copyDiscord()">Copier</button>
+
+        <div style="position: relative; display: inline-block;">
+          <div class="discord-box">
+            <input type="text" class="discord-input" id="discordLink" value="https://discord.gg/ubDtnUn96q" readonly>
+            <button class="copy-btn" onclick="copyDiscord()">
+              Copier
+              <div class="star-1">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                      class="fil0"></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-2">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                      class="fil0"></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-3">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                      class="fil0"></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-4">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                      class="fil0"></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-5">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                      class="fil0"></path>
+                  </g>
+                </svg>
+              </div>
+              <div class="star-6">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 784.11 815.53"
+                  style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                  version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg">
+                  <defs></defs>
+                  <g id="Layer_x0020_1">
+                    <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                    <path
+                      d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                      class="fil0"></path>
+                  </g>
+                </svg>
+              </div>
+            </button>
+            <div id="copyMessage">
+              Lien copié !
+            </div>
+          </div>
         </div>
       </div>
       <a href="https://github.com/MrParpotte/mrparpotte.github.io/">
@@ -429,6 +732,15 @@
           𝐈𝐜𝐢 𝐪𝐮𝐞 𝐝𝐮 𝐫𝐞𝐬𝐩𝐞𝐜𝐭 𝐞𝐭 𝐝𝐞 𝐥𝐚 𝐛𝐨𝐧𝐧𝐞 𝐡𝐮𝐦𝐞𝐮𝐫 !
         </p>
       </div>
+      <h2>
+        Ne clique pas !
+      </h2>
+      <a href="/dontpress.html">
+        <button class="btn-class-name">
+          <span class="back"></span>
+          <span class="front"></span>
+        </button>
+      </a>
       <footer>
         <p>© 2025 MrParpotte. Tous droits réservés.</p>
       </footer>
@@ -437,7 +749,7 @@
   </div>
 
   <script>
-    const MIN_LOADING_TIME = 5000; // 5 secondes
+    const MIN_LOADING_TIME = 3000; // 5 secondes
 
     const start = Date.now();
 
@@ -461,7 +773,14 @@
       const input = document.getElementById("discordLink");
       input.select();
       document.execCommand("copy");
-      alert("Lien Discord copié !");
+
+      const message = document.getElementById("copyMessage");
+      message.style.opacity = 1;
+
+      // Disparition après 2 secondes
+      setTimeout(() => {
+        message.style.opacity = 0;
+      }, 2000);
     }
   </script>
 </body>
