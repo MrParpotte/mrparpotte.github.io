@@ -10,12 +10,11 @@
 ・Affichage clair et épuré de mes liens sociaux (Twitter/X, Instagram, YouTube, etc.)
 ・Photo de profil ronde en haut de la page pour une touche personnelle
 ・Animation de particules en fond, pour un design moderne et dynamique
-・Effet visuel et sonore au clic sur les liens, pour une interaction agréable
+・Effet visuel au clic sur les liens, pour une interaction agréable
 ・Section « À propos de moi » pour me présenter brièvement
-・Compteur de visites simple pour suivre le trafic
-・Mode clair/sombre activable par l’utilisateur
 
 → Technologies utilisées :
 ・HTML5 / CSS3 (Flexbox, animations, variables CSS pour le thème)
-・JavaScript pour les animations, le mode dark/light, et le compteur
+・JavaScript pour les animations.
 ・Hébergement statique (GitHub Pages)
+• Je travaille pour trouver un bon nom de domaine...
