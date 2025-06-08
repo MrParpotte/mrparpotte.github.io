@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mes Réseaux Sociaux</title>
+  <title>Mes Réseaux Sociaux 📱</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
@@ -17,11 +17,6 @@
       background-color: #0d1117;
       color: #f0f6fc;
       transition: background-color 0.4s, color 0.4s;
-    }
-
-    body.light-mode {
-      background-color: #ffffff;
-      color: #000000;
     }
 
     .container {
@@ -1402,7 +1397,6 @@
         <div class="matrix-column"></div>
       </div>
     </div>
-    <button class="mode-switch" onclick="toggleMode()">Thème Clair/Sombre</button>
     <div class="container">
       <div class="card">
         <img src="profile.jpg" alt="Photo de profil" class="profile-pic" />
@@ -1566,9 +1560,6 @@
         }, 500); // attendre la transition CSS
       }, Math.max(0, remainingTime));
     });
-    function toggleMode() {
-      document.body.classList.toggle("light-mode");
-    }
     function copyDiscord() {
       const input = document.getElementById("discordLink");
       input.select();
