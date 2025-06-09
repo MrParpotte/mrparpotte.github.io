@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mes Réseaux Sociaux 📱</title>
+  <link rel="website icon" type="png" href="1f517.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     * {
@@ -13,6 +14,7 @@
 
     body {
       margin: 0;
+      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: #0d1117;
       color: #f0f6fc;
@@ -950,6 +952,72 @@
       padding: 20px;
       border-radius: 10px;
     }
+
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    #clock h2 {
+      position: relative;
+      display: block;
+      color: #fff;
+      text-align: center;
+      margin: 10px 0;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      font-size: 2em;
+    }
+
+    #clock #time {
+      display: flex;
+      justify-content: center;
+    }
+
+    #clock #time div {
+      position: relative;
+      margin: 0 5px;
+    }
+
+    #clock #time div span {
+      position: relative;
+      display: block;
+      width: 100px;
+      height: 80px;
+      background: #cd6e8a;
+      color: #fff;
+      font-weight: 300;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3em;
+      z-index: 10;
+      box-shadow: 0 0 0 1px rgba(0, 0, 0, .2);
+    }
+
+    #clock #time div span:nth-child(2) {
+      height: 30px;
+      font-size: 0.7em;
+      letter-spacing: 0.2em;
+      font-weight: 500;
+      z-index: 9;
+      box-shadow: none;
+      background: #cd6e8a;
+      text-transform: uppercase;
+    }
+
+    #clock #time div:nth-last-child(2) span {
+      background: #ffcfac;
+    }
+
+    #clock #time div:nth-last-child(2) span:nth-child(2) {
+      background: #ffcfac;
+    }
   </style>
 </head>
 
@@ -1397,6 +1465,17 @@
         <div class="matrix-column"></div>
       </div>
     </div>
+
+    <div id="clock">
+      <h2>L'heure ⬇️</h2>
+      <div id="time">
+        <div><span id="hour">00</span><span>Heures</span></div>
+        <div><span id="minutes">00</span><span>Minutes</span></div>
+        <div><span id="seconds">00</span><span>Secondes</span></div>
+      </div>
+    </div>
+
+
     <div class="container">
       <div class="card">
         <img src="profile.jpg" alt="Photo de profil" class="profile-pic" />
@@ -1573,6 +1652,25 @@
         message.style.opacity = 0;
       }, 2000);
     }
+    function clock() {
+      var hours = document.getElementById('hour');
+      var minutes = document.getElementById('minutes');
+      var seconds = document.getElementById('seconds');
+
+      var h = new Date().getHours();
+      var m = new Date().getMinutes();
+      var s = new Date().getSeconds();
+
+      h = (h < 10) ? "0" + h : h;
+      m = (m < 10) ? "0" + m : m;
+      s = (s < 10) ? "0" + s : s;
+
+      hours.innerHTML = h;
+      minutes.innerHTML = m;
+      seconds.innerHTML = s;
+    }
+
+    var interval = setInterval(clock, 1000);
   </script>
 </body>
 
