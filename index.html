@@ -35,10 +35,11 @@
       text-align: center;
       border: none;
       border-radius: 10px;
-      background: radial-gradient(ellipse farthest-side at 76% 77%, rgba(245, 228, 212, 0.25) 4%, rgba(255, 255, 255, 0) calc(4% + 1px)), radial-gradient(circle at 76% 40%, #fef6ec 4%, rgba(255, 255, 255, 0) 4.18%), linear-gradient(135deg, #ff0000 0%, #000036 100%), radial-gradient(ellipse at 28% 0%, #ffcfac 0%, rgba(98, 149, 144, 0.5) 100%), linear-gradient(180deg, #cd6e8a 0%, #f5eab0 69%, #d6c8a2 70%, #a2758d 100%);
+      background-color: #4158D0;
+      background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
       background-blend-mode: normal, normal, screen, overlay, normal;
-      box-shadow: 0px 0px 10px 1px #000000;
-      box-shadow: 0 0 5px #f5eab0, 0 0 15px #fef6ec, 0 0 25px #ffcfac, 0 0 100px #d6c8a2;
+      box-shadow: 0 0 5px #4158D0, 0 0 15px #C850C0, 0 0 25px #FFCC70, 0 0 100px #4158D0;
+      box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     }
 
     .profile-pic {
@@ -369,6 +370,7 @@
       width: 60px;
       height: 50px;
       border: none;
+      margin-top: 25px;
       outline: none;
       cursor: pointer;
       user-select: none;
@@ -962,18 +964,6 @@
       font-family: 'Open Sans', sans-serif;
     }
 
-    #clock h2 {
-      position: relative;
-      display: block;
-      color: #fff;
-      text-align: center;
-      margin: 10px 0;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.4em;
-      font-size: 2em;
-    }
-
     #clock #time {
       display: flex;
       justify-content: center;
@@ -1017,6 +1007,352 @@
 
     #clock #time div:nth-last-child(2) span:nth-child(2) {
       background: #ffcfac;
+    }
+
+    .uiverse {
+      --duration: 7s;
+      --easing: linear;
+      --c-color-1: rgba(255, 163, 26, 0.7);
+      --c-color-2: #1a23ff;
+      --c-color-3: #e21bda;
+      --c-color-4: rgba(255, 232, 26, 0.7);
+      --c-shadow: rgba(255, 223, 87, 0.5);
+      --c-shadow-inset-top: rgba(255, 223, 52, 0.9);
+      --c-shadow-inset-bottom: rgba(255, 250, 215, 0.8);
+      --c-radial-inner: #ffd215;
+      --c-radial-outer: #fff172;
+      --c-color: #fff;
+      -webkit-tap-highlight-color: transparent;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      position: relative;
+      cursor: pointer;
+      border: none;
+      display: table;
+      border-radius: 24px;
+      padding: 0;
+      margin: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      line-height: 1.5;
+      color: var(--c-color);
+      background: radial-gradient(circle,
+          var(--c-radial-inner),
+          var(--c-radial-outer) 80%);
+      box-shadow: 0 0 14px var(--c-shadow);
+    }
+
+    .uiverse span {
+      font-size: 32px;
+    }
+
+    .uiverse:before {
+      content: "";
+      pointer-events: none;
+      position: absolute;
+      z-index: 3;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 24px;
+      box-shadow:
+        inset 0 3px 12px var(--c-shadow-inset-top),
+        inset 0 -3px 4px var(--c-shadow-inset-bottom);
+    }
+
+    .uiverse .wrapper {
+      mask-image: radial-gradient(white, black);
+      -webkit-mask-image: -webkit-radial-gradient(white, black);
+      overflow: hidden;
+      border-radius: 24px;
+      min-width: 132px;
+      padding: 12px 0;
+    }
+
+    .uiverse .wrapper span {
+      display: inline-block;
+      position: relative;
+      z-index: 1;
+    }
+
+    .uiverse:hover {
+      --duration: 1400ms;
+    }
+
+    .uiverse .wrapper .circle {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      filter: blur(var(--blur, 8px));
+      background: var(--background, transparent);
+      transform: translate(var(--x, 0), var(--y, 0)) translateZ(0);
+      animation: var(--animation, none) var(--duration) var(--easing) infinite;
+    }
+
+    .uiverse .wrapper .circle.circle-1,
+    .uiverse .wrapper .circle.circle-9,
+    .uiverse .wrapper .circle.circle-10 {
+      --background: var(--c-color-4);
+    }
+
+    .uiverse .wrapper .circle.circle-3,
+    .uiverse .wrapper .circle.circle-4 {
+      --background: var(--c-color-2);
+      --blur: 14px;
+    }
+
+    .uiverse .wrapper .circle.circle-5,
+    .uiverse .wrapper .circle.circle-6 {
+      --background: var(--c-color-3);
+      --blur: 16px;
+    }
+
+    .uiverse .wrapper .circle.circle-2,
+    .uiverse .wrapper .circle.circle-7,
+    .uiverse .wrapper .circle.circle-8,
+    .uiverse .wrapper .circle.circle-11,
+    .uiverse .wrapper .circle.circle-12 {
+      --background: var(--c-color-1);
+      --blur: 12px;
+    }
+
+    .uiverse .wrapper .circle.circle-1 {
+      --x: 0;
+      --y: -40px;
+      --animation: circle-1;
+    }
+
+    .uiverse .wrapper .circle.circle-2 {
+      --x: 92px;
+      --y: 8px;
+      --animation: circle-2;
+    }
+
+    .uiverse .wrapper .circle.circle-3 {
+      --x: -12px;
+      --y: -12px;
+      --animation: circle-3;
+    }
+
+    .uiverse .wrapper .circle.circle-4 {
+      --x: 80px;
+      --y: -12px;
+      --animation: circle-4;
+    }
+
+    .uiverse .wrapper .circle.circle-5 {
+      --x: 12px;
+      --y: -4px;
+      --animation: circle-5;
+    }
+
+    .uiverse .wrapper .circle.circle-6 {
+      --x: 56px;
+      --y: 16px;
+      --animation: circle-6;
+    }
+
+    .uiverse .wrapper .circle.circle-7 {
+      --x: 8px;
+      --y: 28px;
+      --animation: circle-7;
+    }
+
+    .uiverse .wrapper .circle.circle-8 {
+      --x: 28px;
+      --y: -4px;
+      --animation: circle-8;
+    }
+
+    .uiverse .wrapper .circle.circle-9 {
+      --x: 20px;
+      --y: -12px;
+      --animation: circle-9;
+    }
+
+    .uiverse .wrapper .circle.circle-10 {
+      --x: 64px;
+      --y: 16px;
+      --animation: circle-10;
+    }
+
+    .uiverse .wrapper .circle.circle-11 {
+      --x: 4px;
+      --y: 4px;
+      --animation: circle-11;
+    }
+
+    .uiverse .wrapper .circle.circle-12 {
+      --blur: 14px;
+      --x: 52px;
+      --y: 4px;
+      --animation: circle-12;
+    }
+
+    @keyframes circle-1 {
+      33% {
+        transform: translate(0px, 16px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(12px, 64px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-2 {
+      33% {
+        transform: translate(80px, -10px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(72px, -48px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-3 {
+      33% {
+        transform: translate(20px, 12px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(12px, 4px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-4 {
+      33% {
+        transform: translate(76px, -12px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(112px, -8px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-5 {
+      33% {
+        transform: translate(84px, 28px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(40px, -32px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-6 {
+      33% {
+        transform: translate(28px, -16px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(76px, -56px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-7 {
+      33% {
+        transform: translate(8px, 28px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(20px, -60px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-8 {
+      33% {
+        transform: translate(32px, -4px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(56px, -20px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-9 {
+      33% {
+        transform: translate(20px, -12px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(80px, -8px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-10 {
+      33% {
+        transform: translate(68px, 20px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(100px, 28px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-11 {
+      33% {
+        transform: translate(4px, 4px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(68px, 20px) translateZ(0);
+      }
+    }
+
+    @keyframes circle-12 {
+      33% {
+        transform: translate(56px, 0px) translateZ(0);
+      }
+
+      66% {
+        transform: translate(60px, -32px) translateZ(0);
+      }
+    }
+
+    .download_button {
+      color: rgba(255, 255, 255, 0.692);
+      padding: 10px 15px;
+      max-width: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.397);
+      background: rgba(255, 255, 255, 0.247);
+      overflow: hidden;
+      font-size: 0.9rem;
+      font-weight: 600;
+      gap: 8px;
+      border-radius: 5px;
+      margin-top: 20px;
+      margin-bottom: 25px;
+      margin-left: auto;
+      margin-right: auto;
+      transition: 0.2s;
+      border: 1px solid transparent;
+    }
+
+    .download_button:hover {
+      border-color: rgba(255, 255, 255, 0.623);
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.144),
+          rgba(255, 255, 255, 0.247),
+          rgba(255, 255, 255, 0.39));
+      box-shadow: 0 6px rgba(255, 255, 255, 0.623);
+      transform: translateY(-6px);
+    }
+
+    .download_button:active {
+      transform: translateY(2px);
+      box-shadow: none;
     }
   </style>
 </head>
@@ -1467,7 +1803,23 @@
     </div>
 
     <div id="clock">
-      <h2>L'heure ⬇️</h2>
+      <button class="uiverse">
+        <div class="wrapper">
+          <span>⬇️ L'heure ⬇️</span>
+          <div class="circle circle-12"></div>
+          <div class="circle circle-11"></div>
+          <div class="circle circle-10"></div>
+          <div class="circle circle-9"></div>
+          <div class="circle circle-8"></div>
+          <div class="circle circle-7"></div>
+          <div class="circle circle-6"></div>
+          <div class="circle circle-5"></div>
+          <div class="circle circle-4"></div>
+          <div class="circle circle-3"></div>
+          <div class="circle circle-2"></div>
+          <div class="circle circle-1"></div>
+        </div>
+      </button>
       <div id="time">
         <div><span id="hour">00</span><span>Heures</span></div>
         <div><span id="minutes">00</span><span>Minutes</span></div>
@@ -1604,6 +1956,19 @@
           𝐉'𝐞𝐬𝐩𝐞𝐫𝐞 𝐪𝐮𝐞 𝐜𝐞𝐭𝐭𝐞 𝐜𝐡𝐚𝐢𝐧𝐞 𝐭𝐞 𝐩𝐥𝐚𝐢𝐫𝐚 !
           𝐈𝐜𝐢 𝐪𝐮𝐞 𝐝𝐮 𝐫𝐞𝐬𝐩𝐞𝐜𝐭 𝐞𝐭 𝐝𝐞 𝐥𝐚 𝐛𝐨𝐧𝐧𝐞 𝐡𝐮𝐦𝐞𝐮𝐫 !
         </p>
+      </div>
+      <div class="download">
+        <h2>
+          Découvre un de mes autres projets !
+        </h2>
+        <a class="download_button" href="https://drive.google.com/uc?export=download&id=1xXFhVTq2szzjtFP3pAhJ5IB_K97y_N3y" download>
+          <svg viewBox="0 0 256 256" height="32" width="38" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M74.34 85.66a8 8 0 0 1 11.32-11.32L120 108.69V24a8 8 0 0 1 16 0v84.69l34.34-34.35a8 8 0 0 1 11.32 11.32l-48 48a8 8 0 0 1-11.32 0ZM240 136v64a16 16 0 0 1-16 16H32a16 16 0 0 1-16-16v-64a16 16 0 0 1 16-16h52.4a4 4 0 0 1 2.83 1.17L111 145a24 24 0 0 0 34 0l23.8-23.8a4 4 0 0 1 2.8-1.2H224a16 16 0 0 1 16 16m-40 32a12 12 0 1 0-12 12a12 12 0 0 0 12-12"
+              fill="currentColor">
+            </path>
+          </svg>
+        </a>
       </div>
       <h2>
         Ne clique pas !
