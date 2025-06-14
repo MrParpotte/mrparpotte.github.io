@@ -878,23 +878,23 @@
     }
 
     .matrix-column:nth-child(odd)::before {
-      content: "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン123456789";
+      content: "1001010100101010010101001010100100101001010101001001010010100010010101010101001010101001011";
     }
 
     .matrix-column:nth-child(even)::before {
-      content: "ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴァィゥェォャュョッABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      content: "0110101010100101010010100101010100101001101001010101010010100101001010100101010010100010101001";
     }
 
     .matrix-column:nth-child(3n)::before {
-      content: "アカサタナハマヤラワイキシチニヒミリウクスツヌフムユルエケセテネヘメレオコソトノホモヨロヲン0987654321";
+      content: "1010100110100101001010100101011010010100101001010010100101001001010010010100101001010010100101001";
     }
 
     .matrix-column:nth-child(4n)::before {
-      content: "ンヲロヨモホノトソコオレメヘネテセケエルユムフヌツスクウリミヒニチシキイワラヤマハナタサカア";
+      content: "101010010010100101001010010010100101001011001010010100101010010100101100100101010101001010010101001011001";
     }
 
     .matrix-column:nth-child(5n)::before {
-      content: "ガザダバパギジヂビピグズヅブプゲゼデベペゴゾドボポヴァィゥェォャュョッ!@#$%^&*()_+-=[]{}|;:,.<>?";
+      content: "10101001010100101010010010100100101001010010010010100001001010100101001010100110100101010010100101001010010101";
     }
 
     @keyframes fall {
@@ -1364,6 +1364,61 @@
     .download h3 {
       text-align: center;
     }
+
+    .cmd {
+      /* in scss with just one variable i can change opacity with rgba(variable, opacity) but in css it's not possible so i have used three seperate variables */
+      /* with hue-rotate color can be changed */
+      --main-color: rgb(46, 213, 115);
+      --main-bg-color: rgba(46, 213, 116, 0.36);
+      --pattern-color: rgba(46, 213, 116, 0.073);
+
+      /* change this rotation value */
+      filter: hue-rotate(0deg);
+
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.5rem;
+      background: radial-gradient(circle,
+          var(--main-bg-color) 0%,
+          rgba(0, 0, 0, 0) 95%),
+        linear-gradient(var(--pattern-color) 1px, transparent 1px),
+        linear-gradient(to right, var(--pattern-color) 1px, transparent 1px);
+      background-size:
+        cover,
+        15px 15px,
+        15px 15px;
+      background-position:
+        center center,
+        center center,
+        center center;
+      border-image: radial-gradient(circle,
+          var(--main-color) 0%,
+          rgba(0, 0, 0, 0) 100%) 1;
+      border-width: 1px 0 1px 0;
+      color: var(--main-color);
+      padding: 1rem 3rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      font-size: 1.5rem;
+      transition: background-size 0.2s ease-in-out;
+    }
+
+    .cmd:hover {
+      background-size:
+        cover,
+        10px 10px,
+        10px 10px;
+    }
+
+    .cmd:active {
+      filter: hue-rotate(250deg);
+    }
+
+    .cmddiv h2 {
+      margin-bottom: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
   </style>
 </head>
 
@@ -1811,7 +1866,6 @@
         <div class="matrix-column"></div>
       </div>
     </div>
-
     <div id="clock">
       <button class="uiverse">
         <div class="wrapper">
@@ -1836,8 +1890,6 @@
         <div><span id="seconds">00</span><span>Secondes</span></div>
       </div>
     </div>
-
-
     <div class="container">
       <div class="card">
         <img src="profile.jpg" alt="Photo de profil" class="profile-pic" />
@@ -1985,6 +2037,12 @@
           </svg>
         </a>
       </div>
+      <div class="cmddiv">
+        <h2>Debuggeur Terminal</h2>
+        <a href="/cmd.html">
+          <button class="cmd">Entrer</button>
+        </a>
+      </div>
       <h2>
         Ne clique pas !
       </h2>
@@ -1997,7 +2055,6 @@
       <footer>
         <p>© 2025 MrParpotte. Tous droits réservés.</p>
       </footer>
-
     </div>
   </div>
 

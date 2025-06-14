@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MrParpotte Cmd Debugger</title>
+    <link rel="website icon" type="jpeg" href="images.jpeg">
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+            color: #0f0;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        #terminal {
+            width: 100%;
+            height: 90vh;
+            overflow-y: auto;
+            white-space: pre-wrap;
+        }
+
+        #input-line {
+            display: flex;
+        }
+
+        #prompt {
+            margin-right: 5px;
+        }
+
+        input {
+            background: none;
+            border: none;
+            color: #0f0;
+            font-family: inherit;
+            outline: none;
+            width: 100%;
+        }
+
+        .output {
+            margin-bottom: 5px;
+        }
+
+        .glitch {
+            animation: glitch 1s infinite;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 1px 1px red;
+            }
+
+            50% {
+                text-shadow: -1px -1px blue;
+            }
+
+            100% {
+                text-shadow: 1px 1px red;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="terminal"></div>
+    <div id="input-line" class="hidden">
+        <span id="prompt">></span>
+        <input type="text" id="command" autofocus>
+    </div>
+
+    <script>
+        const terminal = document.getElementById('terminal');
+        const commandInput = document.getElementById('command');
+        const inputLine = document.getElementById('input-line');
+
+        const writeOutput = (text) => {
+            const output = document.createElement('div');
+            output.classList.add('output');
+            output.textContent = text;
+            terminal.appendChild(output);
+            terminal.scrollTop = terminal.scrollHeight;
+        };
+
+        const writeLineByLine = async (lines, delay = 80) => {
+            for (const line of lines) {
+                await new Promise(resolve => setTimeout(resolve, delay));
+                writeOutput(line);
+            }
+        };
+
+        const bootSequence = async () => {
+            const bootLines = [
+                '[BIOS] Initialisation des registres mémoire...',
+                '[BIOS] Vérification de l’intégrité système... OK',
+                '[BIOS] Détection des périphériques connectés... OK',
+                '[NET ] Connexion à mrparpotte.github.io...',
+                '[NET ] Authentification réussie. Token accepté ✅',
+                '[SYS ] Chargement des modules de surveillance...',
+                '[CORE] Initialisation du module DEBUG.js...',
+                '[CORE] Chargement de l’environnement...',
+                '[INFO] Lancement du terminal en mode administrateur...',
+                '[INFO] Configuration de l’affichage : 80x25 caractères',
+                '[INFO] Vérification de la stabilité réseau...',
+                '[INFO] Synchronisation avec l’horloge mondiale...',
+                '[INFO] Mise à jour du cache DNS...',
+                '[INFO] Analyse heuristique activée...',
+                '[INFO] Séquence de démarrage terminée avec succès',
+                '',
+                'Bienvenue sur le terminal de débogage - MrParpotte',
+                'Tapez "help" pour afficher la liste des commandes disponibles.\n'
+            ];
+
+            await writeLineByLine(bootLines, 150);
+            inputLine.classList.remove('hidden');
+            commandInput.focus();
+        };
+
+        const commands = {
+            help: () => {
+                return `Commandes disponibles:\nhelp - liste les commandes\nping - vérifie l'état de mrparpotte.github.io\nstatus - code HTTP du site\ntitle - titre du site\nclear - nettoie le terminal`;
+            },
+            clear: () => {
+                terminal.innerHTML = '';
+                return '';
+            },
+            ping: async () => {
+                try {
+                    const res = await fetch('https://mrparpotte.github.io');
+                    return res.ok ? 'Réponse reçue : en ligne ✅' : 'Aucune réponse ❌';
+                } catch (e) {
+                    return 'Erreur de connexion ❌';
+                }
+            },
+            status: async () => {
+                try {
+                    const res = await fetch('https://mrparpotte.github.io');
+                    return `Code HTTP : ${res.status}`;
+                } catch (e) {
+                    return 'Impossible de récupérer le code HTTP';
+                }
+            },
+            title: async () => {
+                try {
+                    const res = await fetch('https://mrparpotte.github.io');
+                    const html = await res.text();
+                    const match = html.match(/<title>(.*?)<\/title>/);
+                    return match ? `Titre : ${match[1]}` : 'Titre non trouvé';
+                } catch (e) {
+                    return 'Erreur lors de la récupération du titre';
+                }
+            }
+        };
+
+        commandInput.addEventListener('keydown', async (e) => {
+            if (e.key === 'Enter') {
+                const input = commandInput.value.trim();
+                writeOutput('> ' + input);
+                commandInput.value = '';
+
+                const cmd = input.split(' ')[0];
+                if (commands[cmd]) {
+                    const result = await commands[cmd]();
+                    if (result) writeOutput(result);
+                } else {
+                    writeOutput(`Commande inconnue: ${cmd}`);
+                }
+            }
+        });
+
+        // Démarrage de la séquence d'initialisation
+        bootSequence();
+    </script>
+</body>
+
+</html>
