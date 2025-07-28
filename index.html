@@ -2108,6 +2108,41 @@
     }
 
     var interval = setInterval(clock, 1000);
+
+    const backendUrl = "http://localhost:3000";
+
+    document.getElementById("signupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+
+      const res = await fetch(`${backendUrl}/signup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      alert(data.success ? "Compte créé !" : "Erreur");
+    });
+
+    document.getElementById("signinForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const email = document.getElementById("signinEmail").value;
+      const password = document.getElementById("signinPassword").value;
+
+      const res = await fetch(`${backendUrl}/signin`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        alert("Connexion réussie !");
+        localStorage.setItem("token", data.token); // stocke le token
+      } else {
+        alert("Échec de la connexion");
+      }
+    });
   </script>
 </body>
 

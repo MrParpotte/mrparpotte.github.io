@@ -124,7 +124,7 @@
 
         const commands = {
             help: () => {
-                return `Commandes disponibles:\nhelp - liste les commandes\nping - vérifie l'état de mrparpotte.github.io\nstatus - code HTTP du site\ntitle - titre du site\nclear - nettoie le terminal`;
+                return `Commandes disponibles:\nhelp - liste les commandes\nping - vérifie l'état de mrparpotte.github.io\nstatus - code HTTP du site\ntitle - titre du site\nclear - nettoie le terminal\nexit - quitte le terminal`;
             },
             clear: () => {
                 terminal.innerHTML = '';
@@ -155,7 +155,14 @@
                 } catch (e) {
                     return 'Erreur lors de la récupération du titre';
                 }
-            }
+            },
+            exit: () => {
+                writeOutput('Fermeture du terminal...');
+                setTimeout(() => {
+                    window.location.href = 'https://mrparpotte.github.io';
+                }, 2000);
+                return 'Redirection en cours 🔁';
+            },
         };
 
         commandInput.addEventListener('keydown', async (e) => {
