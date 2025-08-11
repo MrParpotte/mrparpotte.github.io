@@ -126,7 +126,14 @@
             help: () => {
                 return `Commandes disponibles:\nhelp - liste les commandes\nping - vérifie l'état de mrparpotte.github.io\nstatus - code HTTP du site\ntitle - titre du site\nclear - nettoie le terminal\nexit - quitte le terminal`;
             },
+            Help: () => {
+                return `Commandes disponibles:\nhelp - liste les commandes\nping - vérifie l'état de mrparpotte.github.io\nstatus - code HTTP du site\ntitle - titre du site\nclear - nettoie le terminal\nexit - quitte le terminal`;
+            },
             clear: () => {
+                terminal.innerHTML = '';
+                return '';
+            },
+            Clear: () => {
                 terminal.innerHTML = '';
                 return '';
             },
@@ -138,7 +145,23 @@
                     return 'Erreur de connexion ❌';
                 }
             },
+            Ping: async () => {
+                try {
+                    const res = await fetch('https://mrparpotte.github.io');
+                    return res.ok ? 'Réponse reçue : en ligne ✅' : 'Aucune réponse ❌';
+                } catch (e) {
+                    return 'Erreur de connexion ❌';
+                }
+            },
             status: async () => {
+                try {
+                    const res = await fetch('https://mrparpotte.github.io');
+                    return `Code HTTP : ${res.status}`;
+                } catch (e) {
+                    return 'Impossible de récupérer le code HTTP';
+                }
+            },
+            Status: async () => {
                 try {
                     const res = await fetch('https://mrparpotte.github.io');
                     return `Code HTTP : ${res.status}`;
@@ -156,7 +179,24 @@
                     return 'Erreur lors de la récupération du titre';
                 }
             },
+            Title: async () => {
+                try {
+                    const res = await fetch('https://mrparpotte.github.io');
+                    const html = await res.text();
+                    const match = html.match(/<title>(.*?)<\/title>/);
+                    return match ? `Titre : ${match[1]}` : 'Titre non trouvé';
+                } catch (e) {
+                    return 'Erreur lors de la récupération du titre';
+                }
+            },
             exit: () => {
+                writeOutput('Fermeture du terminal...');
+                setTimeout(() => {
+                    window.location.href = 'https://mrparpotte.github.io';
+                }, 2000);
+                return 'Redirection en cours 🔁';
+            },
+            Exit: () => {
                 writeOutput('Fermeture du terminal...');
                 setTimeout(() => {
                     window.location.href = 'https://mrparpotte.github.io';
