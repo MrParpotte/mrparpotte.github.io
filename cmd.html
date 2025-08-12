@@ -177,7 +177,10 @@ time - heure locale actuelle
 whoami - identifiant utilisateur
 fact - affiche un fait tech aléatoire
 findip - traçage d'IP
-history - historique des commandes éxécutées`;
+history - historique des commandes éxécutées
+rickroll - ...
+sysinfo - affiche les infos hardware
+time - affiche l'heure actuelle`;
             },
             Help() { return commands.help(); },
 
@@ -254,6 +257,28 @@ history - historique des commandes éxécutées`;
             },
             Fact() { return commands.fact(); },
 
+            rickroll: () => {
+                window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+                return 'Chargement... 🎵';
+            },
+            Rickroll() { return commands.rickroll(); },
+
+            sysinfo: () => {
+                return `=== Informations système ===
+CPU : Intel i9-13900K @ 5.8GHz
+RAM : 64 Go DDR5
+Stockage : 2 To NVMe SSD
+OS : MrParpotteOS 1.0
+==============================`;
+            },
+            Sysinfo() { return commands.sysinfo(); },
+
+            time: () => {
+                const now = new Date();
+                return `Heure actuelle : ${now.toLocaleTimeString()} - Date : ${now.toLocaleDateString()}`;
+            },
+            Time() { return commands.time(); },
+
             findip: async (args) => {
                 const res = await fetch('https://api.ipify.org?format=json');
                 const data = await res.json();
@@ -278,7 +303,6 @@ history - historique des commandes éxécutées`;
                 const userCommand = commandInput.value.trim();
                 commandInput.value = '';
 
-                // ⚠️ C’est ici qu’on enregistre l’historique
                 commandHistory.push(userCommand);
                 if (commandHistory.length > 50) commandHistory.shift();
 
@@ -295,7 +319,6 @@ history - historique des commandes éxécutées`;
         });
 
 
-        // Démarrage de la séquence d'initialisation
         bootSequence();
     </script>
 </body>
