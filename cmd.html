@@ -100,95 +100,122 @@
                 '[BIOS] Initialisation des registres mémoire...',
                 '[BIOS] Vérification de l’intégrité système... OK',
                 '[BIOS] Détection des périphériques connectés... OK',
-                '[NET ] Connexion à mrparpotte.github.io...',
-                '[NET ] Authentification réussie. Token accepté ✅',
-                '[SYS ] Chargement des modules de surveillance...',
+                '[BIOS] Chargement des microprogrammes...',
+                '[BIOS] Allocation de la mémoire vidéo...',
+                '[BIOS] Configuration du bus PCI-E x16...',
+                '[BIOS] Détection des disques durs et SSD... 2 trouvés',
+                '[BIOS] Initialisation du chipset audio...',
+                '[BOOT] Chargement du noyau système...',
+                '[BOOT] Initialisation des pilotes matériels...',
+                '[BOOT] Montage des volumes système...',
+                '[BOOT] Lecture des tables de partition...',
+                '[BOOT] Décompression du noyau en mémoire...',
+                '[SEC] Vérification des signatures numériques...',
+                '[SEC] Activation du module anti-intrusion...',
+                '[SEC] Chiffrement des communications internes...',
+                '[NET] Connexion à mrparpotte.github.io...',
+                '[NET] Authentification réussie. Token accepté ✅',
+                '[NET] Attribution d’une adresse IP locale...',
+                '[SYS] Chargement des modules de surveillance...',
+                '[SYS] Activation du pare-feu intégré...',
+                '[SYS] Vérification de la table des processus...',
+                '[SYS] Montage des répertoires /var, /tmp, /home...',
+                '[SYS] Chargement des profils utilisateurs...',
                 '[CORE] Initialisation du module DEBUG.js...',
                 '[CORE] Chargement de l’environnement...',
+                '[CORE] Vérification des dépendances système...',
+                '[CORE] Allocation mémoire dynamique pour le terminal...',
                 '[INFO] Lancement du terminal en mode administrateur...',
                 '[INFO] Configuration de l’affichage : 80x25 caractères',
                 '[INFO] Vérification de la stabilité réseau...',
                 '[INFO] Synchronisation avec l’horloge mondiale...',
                 '[INFO] Mise à jour du cache DNS...',
                 '[INFO] Analyse heuristique activée...',
+                '[INFO] Scan complet des fichiers temporaires...',
+                '[INFO] Compression du journal des événements...',
+                '[INFO] Chargement du module d’analyse comportementale...',
+                '[INFO] Indexation des fichiers systèmes...',
+                '[INFO] Optimisation des performances du noyau...',
                 '[INFO] Séquence de démarrage terminée avec succès',
                 '',
                 'Bienvenue sur le terminal de débogage - MrParpotte',
                 'Tapez "help" pour afficher la liste des commandes disponibles.\n'
             ];
 
-            await writeLineByLine(bootLines, 150);
+            await writeLineByLine(bootLines, 50);
             inputLine.classList.remove('hidden');
             commandInput.focus();
         };
 
+        let commandHistory = [];
+
         const commands = {
+
+            history: () => {
+                if (commandHistory.length === 0) {
+                    return "Aucune commande enregistrée.";
+                }
+                return commandHistory.map((cmd, index) => `${index + 1}: ${cmd}`).join('\n');
+            },
+            History: () => {
+                if (commandHistory.length === 0) {
+                    return "Aucune commande enregistrée.";
+                }
+                return commandHistory.map((cmd, index) => `${index + 1}: ${cmd}`).join('\n');
+            },
+
             help: () => {
-                return `Commandes disponibles:\nhelp - liste les commandes\nping - vérifie l'état de mrparpotte.github.io\nstatus - code HTTP du site\ntitle - titre du site\nclear - nettoie le terminal\nexit - quitte le terminal`;
+                return `Commandes disponibles:
+help - liste les commandes
+ping - vérifie l'état de mrparpotte.github.io
+status - code HTTP du site
+title - titre du site
+clear - nettoie le terminal
+exit - quitte le terminal
+ip - affiche votre adresse IP publique
+time - heure locale actuelle
+whoami - identifiant utilisateur
+fact - affiche un fait tech aléatoire
+findip - traçage d'IP
+history - historique des commandes éxécutées`;
             },
-            Help: () => {
-                return `Commandes disponibles:\nhelp - liste les commandes\nping - vérifie l'état de mrparpotte.github.io\nstatus - code HTTP du site\ntitle - titre du site\nclear - nettoie le terminal\nexit - quitte le terminal`;
-            },
-            clear: () => {
-                terminal.innerHTML = '';
-                return '';
-            },
-            Clear: () => {
-                terminal.innerHTML = '';
-                return '';
-            },
+            Help() { return commands.help(); },
+
+            clear: () => { terminal.innerHTML = ''; return ''; },
+            Clear() { return commands.clear(); },
+
             ping: async () => {
                 try {
                     const res = await fetch('https://mrparpotte.github.io');
                     return res.ok ? 'Réponse reçue : en ligne ✅' : 'Aucune réponse ❌';
-                } catch (e) {
+                } catch {
                     return 'Erreur de connexion ❌';
                 }
             },
-            Ping: async () => {
-                try {
-                    const res = await fetch('https://mrparpotte.github.io');
-                    return res.ok ? 'Réponse reçue : en ligne ✅' : 'Aucune réponse ❌';
-                } catch (e) {
-                    return 'Erreur de connexion ❌';
-                }
-            },
+            Ping() { return commands.ping(); },
+
             status: async () => {
                 try {
                     const res = await fetch('https://mrparpotte.github.io');
                     return `Code HTTP : ${res.status}`;
-                } catch (e) {
+                } catch {
                     return 'Impossible de récupérer le code HTTP';
                 }
             },
-            Status: async () => {
-                try {
-                    const res = await fetch('https://mrparpotte.github.io');
-                    return `Code HTTP : ${res.status}`;
-                } catch (e) {
-                    return 'Impossible de récupérer le code HTTP';
-                }
-            },
+            Status() { return commands.status(); },
+
             title: async () => {
                 try {
                     const res = await fetch('https://mrparpotte.github.io');
                     const html = await res.text();
                     const match = html.match(/<title>(.*?)<\/title>/);
                     return match ? `Titre : ${match[1]}` : 'Titre non trouvé';
-                } catch (e) {
+                } catch {
                     return 'Erreur lors de la récupération du titre';
                 }
             },
-            Title: async () => {
-                try {
-                    const res = await fetch('https://mrparpotte.github.io');
-                    const html = await res.text();
-                    const match = html.match(/<title>(.*?)<\/title>/);
-                    return match ? `Titre : ${match[1]}` : 'Titre non trouvé';
-                } catch (e) {
-                    return 'Erreur lors de la récupération du titre';
-                }
-            },
+            Title() { return commands.title(); },
+
             exit: () => {
                 writeOutput('Fermeture du terminal...');
                 setTimeout(() => {
@@ -196,30 +223,77 @@
                 }, 2000);
                 return 'Redirection en cours 🔁';
             },
-            Exit: () => {
-                writeOutput('Fermeture du terminal...');
-                setTimeout(() => {
-                    window.location.href = 'https://mrparpotte.github.io';
-                }, 2000);
-                return 'Redirection en cours 🔁';
+            Exit() { return commands.exit(); },
+
+            ip: async () => {
+                try {
+                    const res = await fetch('https://api.ipify.org?format=json');
+                    const data = await res.json();
+                    return `Adresse IP publique : ${data.ip}`;
+                } catch {
+                    return 'Impossible de récupérer l’IP';
+                }
             },
+            Ip() { return commands.ip(); },
+
+            time: () => `Heure actuelle : ${new Date().toLocaleTimeString()}`,
+            Time() { return commands.time(); },
+
+            whoami: () => 'Utilisateur connecté : root@mrparpotte',
+            Whoami() { return commands.whoami(); },
+
+            fact: () => {
+                const facts = [
+                    "Le premier bug informatique était un insecte réel.",
+                    "Le mot 'robot' vient du tchèque 'robota', qui signifie travail forcé.",
+                    "Le premier email a été envoyé en 1971.",
+                    "La première page web est toujours en ligne.",
+                    "Plus de 90% de la monnaie mondiale n'existe que sous forme numérique."
+                ];
+                return facts[Math.floor(Math.random() * facts.length)];
+            },
+            Fact() { return commands.fact(); },
+
+            findip: async (args) => {
+                const res = await fetch('https://api.ipify.org?format=json');
+                const data = await res.json();
+                const steps = [
+                    `Recherche de l'adresse ${data.ip}...`,
+                    `Connexion au routeur...`,
+                    `Analyse des paquets...`,
+                    `Localisation approximative : Europe, France`,
+                    `Trace terminée avec succès ✅`
+                ];
+                for (const step of steps) {
+                    await writeOutput(step);
+                    await new Promise(r => setTimeout(r, 700));
+                }
+                return '';
+            },
+            Findip(args) { return commands.trace(args); },
         };
 
         commandInput.addEventListener('keydown', async (e) => {
             if (e.key === 'Enter') {
-                const input = commandInput.value.trim();
-                writeOutput('> ' + input);
+                const userCommand = commandInput.value.trim();
                 commandInput.value = '';
 
-                const cmd = input.split(' ')[0];
-                if (commands[cmd]) {
-                    const result = await commands[cmd]();
+                // ⚠️ C’est ici qu’on enregistre l’historique
+                commandHistory.push(userCommand);
+                if (commandHistory.length > 50) commandHistory.shift();
+
+                writeOutput(`> ${userCommand}`);
+
+                const cmd = commands[userCommand];
+                if (cmd) {
+                    const result = await cmd();
                     if (result) writeOutput(result);
                 } else {
-                    writeOutput(`Commande inconnue: ${cmd}`);
+                    writeOutput(`Commande inconnue : ${userCommand}`);
                 }
             }
         });
+
 
         // Démarrage de la séquence d'initialisation
         bootSequence();
