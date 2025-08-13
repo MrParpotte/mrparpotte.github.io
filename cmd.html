@@ -179,8 +179,7 @@ fact - affiche un fait tech aléatoire
 findip - traçage d'IP
 history - historique des commandes éxécutées
 rickroll - ...
-sysinfo - affiche les infos hardware
-time - affiche l'heure actuelle`;
+sysinfo - affiche les infos hardware`;
             },
             Help() { return commands.help(); },
 
@@ -273,12 +272,6 @@ OS : MrParpotteOS 1.0
             },
             Sysinfo() { return commands.sysinfo(); },
 
-            time: () => {
-                const now = new Date();
-                return `Heure actuelle : ${now.toLocaleTimeString()} - Date : ${now.toLocaleDateString()}`;
-            },
-            Time() { return commands.time(); },
-
             findip: async (args) => {
                 const res = await fetch('https://api.ipify.org?format=json');
                 const data = await res.json();
@@ -322,5 +315,6 @@ OS : MrParpotteOS 1.0
         bootSequence();
     </script>
 </body>
+
 
 </html>
