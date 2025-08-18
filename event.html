@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Compte à rebours</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #0f1226;
+      color: white;
+    }
+    .container {
+      text-align: center;
+    }
+    .timer {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+    .tile {
+      background: #171a32;
+      padding: 20px;
+      border-radius: 10px;
+      min-width: 80px;
+    }
+    .value { font-size: 40px; font-weight: bold; }
+    .unit { font-size: 14px; color: #a6accd; }
+    .btn {
+      padding: 12px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #6c7cff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn:hover { background: #5a69e6; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button id="start" class="btn">Démarrer 15 min</button>
+
+    <div class="timer">
+      <div class="tile"><div class="value" id="minutes">15</div><div class="unit">minutes</div></div>
+      <div class="tile"><div class="value" id="seconds">00</div><div class="unit">secondes</div></div>
+    </div>
+  </div>
+
+  <script>
+    const minutesEl = document.getElementById("minutes");
+    const secondsEl = document.getElementById("seconds");
+    const startBtn = document.getElementById("start");
+
+    let countdown;
+
+    function startCountdown() {
+      let time = 15 * 60; // 15 minutes en secondes
+      clearInterval(countdown);
+      updateDisplay(time);
+      countdown = setInterval(() => {
+        time--;
+        if (time < 0) {
+          clearInterval(countdown);
+          alert("⏰ Temps écoulé !");
+          return;
+        }
+        updateDisplay(time);
+      }, 1000);
+    }
+
+    function updateDisplay(time) {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      minutesEl.textContent = String(minutes).padStart(2, "0");
+      secondsEl.textContent = String(seconds).padStart(2, "0");
+    }
+
+    startBtn.addEventListener("click", startCountdown);
+  </script>
+</body>
+</html>
